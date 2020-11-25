@@ -1,3 +1,4 @@
+import React from 'react';
 import Home from './components/pages/home';
 import Header from "./components/header";
 import { store, persistor } from './configs/store';
