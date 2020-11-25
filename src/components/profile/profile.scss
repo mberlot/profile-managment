@@ -1,0 +1,39 @@
+@import "./src/styles/variables";
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  justify-content: center;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.39);
+  border-radius: 5px;
+  & .profile-name {
+    background-color: $light-blue;
+    color: $withe;
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    & svg {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+    }
+    & h3 {
+      margin-bottom: 60px;
+    }
+  }
+
+  & img {
+    border-radius: 100%;
+    border: 3px solid white;
+    margin: -65px;
+  }
+
+  & .profile-description {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    color: $gray;
+  }
+}

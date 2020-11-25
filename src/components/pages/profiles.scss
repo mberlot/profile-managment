@@ -1,0 +1,11 @@
+.profiles {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+}
+
+.profiles > .profile {
+  margin: 6px;
+}
