@@ -19,7 +19,7 @@ export const getProfiles = () => async (dispatch) => {
         dispatch(getProfilesSuccess({ profiles: response.data.results, defaultProfiles: response.data.results }));
     }
     catch(err) {
-        dispatch(getProfilesFailed({ errorMessage: err }));
+        dispatch(getProfilesFailed({ errorMessage: err.message }));
     }
 };
 

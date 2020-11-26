@@ -6,11 +6,21 @@ import ProfileBox from "../profile";
 import './profiles.scss';
 import ProfileEditModal from "../modal/profileEdit";
 
+//TODO: move this to a config file
+const FetchState = {
+    NOT_FETCHED: 'NOT_FETCHED',
+    FETCHING: 'FETCHING',
+    FETCHED: 'FETCHED',
+};
+
 const Profiles = props => {
     const dispatch = useDispatch();
     const profiles = useSelector(state => state.profiles.profiles );
+    const fetchState = useSelector(state => state.profiles.fetchState );
+    const errorMessage = useSelector(state => state.profiles.errorMessage );
     const [order, setOrder] = useState('none');
     const [openEdit, setOpenEdit] = useState(false);
+
 
     useEffect(() => {
         dispatch(getProfiles());
@@ -34,7 +44,7 @@ const Profiles = props => {
                 </span>
             </div>
             <div className='profiles'>
-                {profiles && profiles.map((item, index) => {
+                {fetchState !== FetchState.FETCHING && profiles && profiles.map((item, index) => {
                     return (<ProfileBox
                         key={index}
                         firstName={item.name.first}
@@ -49,6 +59,13 @@ const Profiles = props => {
                         }}
                     />)
                 })}
+                {fetchState === FetchState.FETCHING &&
+                <div>
+                    {'Loading...'}
+                </div>}
+                {fetchState !== FetchState.FETCHING && errorMessage &&
+                    <div>{'Error while loading, please refresh the page.'}</div>
+                }
             </div>
             <ProfileEditModal
                 open={openEdit}

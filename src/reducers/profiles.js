@@ -22,7 +22,8 @@ const initialState = {
     profiles: [],
     defaultProfiles: [],
     profileSelected: {},
-    indexSelected: 0
+    indexSelected: 0,
+    errorMessage: ''
 };
 
 export default handleActions({
