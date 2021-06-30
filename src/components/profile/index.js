@@ -6,7 +6,7 @@ import { faUserEdit} from '@fortawesome/free-solid-svg-icons';
 const ProfileBox = ({firstName, lastName, imgSource, email, phone, location, edit}) => {
 
     return (
-        <div className='profile'>
+        <div className='profile' data-testid="profile">
             <div className='profile-name'>
                 <FontAwesomeIcon icon={faUserEdit} onClick={edit}/>
                 <h3>{firstName + ' ' + lastName}</h3>

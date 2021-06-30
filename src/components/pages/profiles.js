@@ -44,21 +44,26 @@ const Profiles = props => {
                 </span>
             </div>
             <div className='profiles'>
-                {fetchState !== FetchState.FETCHING && profiles && profiles.map((item, index) => {
-                    return (<ProfileBox
-                        key={index}
-                        firstName={item.name.first}
-                        lastName={item.name.last}
-                        imgSource={item.picture.large}
-                        email={item.email}
-                        phone={item.phone}
-                        location={item.location}
-                        edit={() => {
-                            dispatch(selectProfile(item, index));
-                            setOpenEdit(true);
-                        }}
-                    />)
-                })}
+                {fetchState !== FetchState.FETCHING && profiles && 
+                <div data-testid="profiles">
+                    {profiles.map((item, index) => {
+                        return (<ProfileBox
+                            key={index}
+                            index={index}
+                            firstName={item.name.first}
+                            lastName={item.name.last}
+                            imgSource={item.picture.large}
+                            email={item.email}
+                            phone={item.phone}
+                            location={item.location}
+                            edit={() => {
+                                dispatch(selectProfile(item, index));
+                                setOpenEdit(true);
+                            }}
+                        />)
+                    })}
+                </div>
+                }
                 {fetchState === FetchState.FETCHING &&
                 <div>
                     {'Loading...'}
